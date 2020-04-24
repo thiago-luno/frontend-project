@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './styles.css'
 
 import bg from '../../assets/evt.png'
 
 export default function Form() {
+
+    const [diaCheio, setDiaCheio] = useState(true);
+
+    const inputListenerCheckBox = event => {
+        const checkBox = event.target;
+        setDiaCheio(checkBox.checked);
+    }
+
     return (
 
         <section className="page-form-content">
@@ -25,27 +33,37 @@ export default function Form() {
                     </div>
 
                     <div className="form__group">
-                        <label htmlFor="descricao">Acionar uma descrição</label>
+                        <label htmlFor="descricao">Adicionar uma descrição</label>
                         <textarea id="descricao" cols="5" rows="5" type="text" />
                     </div>
 
                     <div className="form__group form__group--line">
-                        <input id="duracao" type="checkbox" checked />
+                        <input 
+                            type="checkbox"
+                            id="duracao"
+                            checked={diaCheio}
+                            onChange={inputListenerCheckBox}
+                            />
                         <label htmlFor="duracao">Dia Inteiro</label>
                     </div>
 
-                    <div className="form__group form__group--line">
+                    {!diaCheio && 
+                        <div className="form__group form__group--line">
+                            <div className="form__group  form__group--small">
+                                <label htmlFor="horaInicio">De</label>
+                                <input 
+                                    id="horaInicio" 
+                                    type="text" 
+                                    autoFocus
+                                    onChange={inputListenerCheckBox} />
+                            </div>
 
-                        <div className="form__group  form__group--small">
-                            <label htmlFor="duracao">De</label>
-                            <input type="text" />
+                            <div className="form__group  form__group--small form__group--spaceX">
+                                <label htmlFor="horaFim">Até</label>
+                                <input id="horaFim" type="text" />
+                            </div>
                         </div>
-
-                        <div className="form__group  form__group--small form__group--spaceX">
-                            <label htmlFor="duracao">Até</label>
-                            <input type="text" />
-                        </div>
-                    </div>
+                    }
 
                     <br></br>
                     <button className="btn btn--success" type="button">Enviar</button>
