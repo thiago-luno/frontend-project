@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f3f3f3;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.app {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 260px auto;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas:
+  "sidenav header"
+  "sidenav main"
+  ;
+}
+
+.app.expanded {
+  grid-template-columns: 0px 1fr;
+  grid-template-rows: 70px 1fr;
+  grid-template-areas:
+  "sidenav header"
+  "sidenav main"
+  ;
+}
+
+.header {
+  grid-area: header;
+}
+
+.menu {
+  grid-area: sidenav;
+}
+
+.main {
+  grid-area: main;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.form__group--small {
+  width: 25%;
+}
+
+.form__group--line {
+  flex-direction: row;
+}
+
+.form__group--spaceX {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.form__group label {
+  user-select: none;
+  color: #21d1ad;
+}
+
+.form__group input {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 15px;
+  font-size: 24px;
+  box-shadow: 0px 1px 0px 0px #989393;
+  transition: box-shadow .2s ease-out;
+}
+
+.form__group input:focus {
+  box-shadow: 0px 3px 0px 0px#21d1ad;
+}
+
+.form__group textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  padding: 15px;
+  font-size: 24px;
+  resize: none;
+  box-shadow: 0px 0px 0px 1px #989393;
+  transition: box-shadow .2s ease-out;
+}
+
+.form__group textarea:focus {
+  box-shadow: 0px 0px 0px 3px #21d1ad;
+}
+
+.form__group input[type="checkbox"] {
+  display: none;
+}
+
+.form__group input[type="checkbox"] ~ label::before {
+  content: "";
+  width: 25px;
+  height: 23px;
+  background: #dddddd;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.form__group input[type="checkbox"]:checked ~ label::before {
+  background-color: #21d1ad;
+  content: "✔️";
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.btn {
+  display: flex;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .2s ease-out;
+}
+
+.btn:hover {
+  opacity: .9;
+}
+
+.btn--success {
+  background: #21d1ad;
+  color: #fff;
+  margin-left: auto;
+}
+
+@media (max-width: 1023px) {
+  .app {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 0px 1fr;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas:
+    "sidenav header"
+    "sidenav main"
+    ;
+  }
+}
+
